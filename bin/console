@@ -1,0 +1,12 @@
+<?php
+
+use AceleraDev\Caesar\Application;
+use AceleraDev\Caesar\FakeClient;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$app = new Application(new FakeClient());
+$exitCode = $app->run(new ArgvInput(), new ConsoleOutput());
+exit($exitCode);
