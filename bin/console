@@ -1,0 +1,20 @@
+<?php
+
+use AceleraDev\Caesar\Application;
+use AceleraDev\Caesar\GuzzleHttpClient;
+use GuzzleHttp\Client;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$token = getenv('CODENATION_TOKEN');
+$baseUri = getenv('CODENATION_BASE_URI');
+$client = new GuzzleHttpClient(
+    new Client([
+        'base_uri' => $baseUri
+    ])
+);
+$app = new Application($client, $token);
+$exitCode = $app->run(new ArgvInput(), new ConsoleOutput());
+exit($exitCode);

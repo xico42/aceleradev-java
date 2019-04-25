@@ -1,13 +1,24 @@
 {
   "name": "fcoedno/aceleradev-java",
-  "description": "Ceasar cypher",
+  "description": "Caesar cipher",
   "type": "project",
   "require": {
     "guzzlehttp/guzzle": "^6",
     "symfony/console": "^4.2"
   },
   "require-dev": {
-    "phpunit/phpunit": "^8"
+    "phpunit/phpunit": "^8",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "AceleraDev\\Caesar\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AceleraDev\\Caesar\\Tests\\": "tests/"
+    }
   },
   "license": "MIT",
   "authors": [
