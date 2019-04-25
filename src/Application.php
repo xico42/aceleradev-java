@@ -13,16 +13,21 @@ class Application
      * @var HttpClient
      */
     private $httpClient;
+    /**
+     * @var string
+     */
+    private $token;
 
-    public function __construct(HttpClient $httpClient)
+    public function __construct(HttpClient $httpClient, string $token)
     {
         $this->httpClient = $httpClient;
+        $this->token = $token;
     }
 
     public function run(InputInterface $input, OutputInterface $output): int
     {
         $app = new \Symfony\Component\Console\Application();
-        $app->add(new DownloadChallengeCommand($this->httpClient));
+        $app->add(new DownloadChallengeCommand($this->httpClient, $this->token));
         $app->setAutoExit(false);
         return $app->run($input, $output);
     }

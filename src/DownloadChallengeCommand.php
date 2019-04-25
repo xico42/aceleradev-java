@@ -11,9 +11,20 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DownloadChallengeCommand extends Command
 {
-    public function __construct(HttpClient $httpClient)
+    /**
+     * @var HttpClient
+     */
+    private $httpClient;
+    /**
+     * @var string
+     */
+    private $token;
+
+    public function __construct(HttpClient $httpClient, string $token)
     {
         parent::__construct('download-challenge');
+        $this->httpClient = $httpClient;
+        $this->token = $token;
     }
 
     protected function configure()
@@ -31,15 +42,9 @@ class DownloadChallengeCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $file = $input->getArgument('file');
-        $contents = <<<JSON
-{
-  "numero_casas":7,
-  "token":"42887b08841c9cc5df017965ca9aca0d134259c6",
-  "cifrado":"zptwspjpaf pz wylylxbpzpal mvy ylsphipspaf. lkznly d. kpqrzayh",
-  "decifrado":"",
-  "resumo_criptografico":""
-}
-JSON;
-        file_put_contents($file, $contents);
+        $challenge = $this->httpClient->request('GET', 'challenge/dev-ps/generate-data', [
+            'query' => ['token' => $this->token]
+        ]);
+        file_put_contents($file, $challenge->getBody()->getContents());
     }
 }
