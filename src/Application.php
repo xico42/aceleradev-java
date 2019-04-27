@@ -28,6 +28,7 @@ class Application
     {
         $app = new \Symfony\Component\Console\Application();
         $app->add(new DownloadChallengeCommand($this->httpClient, $this->token));
+        $app->add(new SolveChallengeCommand());
         $app->setAutoExit(false);
         return $app->run($input, $output);
     }
