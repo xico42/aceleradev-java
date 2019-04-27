@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AceleraDev\Caesar;
+namespace AceleraDev\Caesar\CaesarCipher;
 
 class Alphabet
 {

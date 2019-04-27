@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AceleraDev\Caesar\Tests\Unit;
+namespace AceleraDev\Caesar\Tests\Unit\CaesarCipher;
 
-use AceleraDev\Caesar\Alphabet;
-use AceleraDev\Caesar\CaesarCipherDecoder;
+use AceleraDev\Caesar\CaesarCipher\Alphabet;
+use AceleraDev\Caesar\CaesarCipher\CaesarCipherDecoder;
 use PHPUnit\Framework\TestCase;
 
 class CaesarCipherDecoderTest extends TestCase

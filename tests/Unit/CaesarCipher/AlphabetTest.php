@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace AceleraDev\Caesar\Tests\Unit;
+namespace AceleraDev\Caesar\Tests\Unit\CaesarCipher;
 
-use AceleraDev\Caesar\Alphabet;
+use AceleraDev\Caesar\CaesarCipher\Alphabet;
 use PHPUnit\Framework\TestCase;
 
 class AlphabetTest extends TestCase
 {
     /**
-     * @var Alphabet
+     * @var \AceleraDev\Caesar\CaesarCipher\Alphabet
      */
     private $alphabet;
 

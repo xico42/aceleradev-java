@@ -15,19 +15,10 @@ class SolveChallengeTest extends TestCase
      * @var string
      */
     private $token;
-    private $outputFilename;
 
     protected function setUp(): void
     {
         $this->token = 'MEU_TOKEN';
-        $this->outputFilename = 'test_solved.json';
-    }
-
-    protected function tearDown(): void
-    {
-        if (file_exists($this->outputFilename)) {
-            unlink($this->outputFilename);
-        }
     }
 
     /**
@@ -40,19 +31,18 @@ class SolveChallengeTest extends TestCase
 
         $input = new ArrayInput([
             'command' => 'solve-challenge',
-            'challenge' => 'challenge.json',
+            'challenge' => __DIR__ . '/challenge.json',
         ]);
         $output = new NullOutput();
 
         $exitCode = $application->run($input, $output);
 
         $httpClient->challengeWasSubmitted();
-        $submittedChallenge = $httpClient->submittedChallenge();
 
         $this->assertSame(0, $exitCode);
         $this->assertJsonStringEqualsJsonString(
             file_get_contents(__DIR__ . '/solved_challenge.json'),
-            $submittedChallenge
+            $httpClient->submittedChallenge()
         );
     }
 }

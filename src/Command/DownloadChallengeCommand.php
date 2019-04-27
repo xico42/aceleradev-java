@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AceleraDev\Caesar;
+namespace AceleraDev\Caesar\Command;
 
+use AceleraDev\Caesar\HttpClient;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

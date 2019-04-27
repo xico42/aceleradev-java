@@ -75,13 +75,16 @@ class FakeClient implements HttpClient
     {
         Assert::assertTrue(
             $this->challengeWasRequested,
-            'Tha challenged should have been requested'
+            'The challenged should have been requested'
         );
     }
 
     public function challengeWasSubmitted()
     {
-        return $this->challengeWasSubmitted;
+        Assert::assertTrue(
+            $this->challengeWasSubmitted,
+            'The challenge should have been submitted'
+        );
     }
 
     public function submittedChallenge()
@@ -98,19 +101,18 @@ class FakeClient implements HttpClient
 
         $multipartElement = array_pop($multipart);
         $multipartElement['name'] = $multipartElement['name'] ?? '';
-        $multipartElement['contents'] = $multipartElement['contents'] ?? '';
         $multipartElement['filename'] = $multipartElement['filename'] ?? '';
 
         if (
             $multipartElement['name'] !== 'answer'
-            || !is_resource($multipartElement['contents'])
+            || !isset($multipartElement['contents'])
             || $multipartElement['filename'] !== 'answer.json'
         ) {
             return $response->withStatus(200);
         }
 
         $this->challengeWasSubmitted = true;
-        $this->submittedChallenge = stream_get_contents($multipartElement['contents']);
+        $this->submittedChallenge = $multipartElement['contents'];
         return $response->withStatus(200);
     }
 }
