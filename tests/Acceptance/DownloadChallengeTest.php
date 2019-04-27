@@ -39,6 +39,6 @@ class DownloadChallengeTest extends TestCase
         $httpClient->challengeWasRequested();
 
         $this->assertEquals(0, $exitCode);
-        $this->assertFileEquals(__DIR__ . '/challenge.json', $this->filename);
+        $this->assertJsonFileEqualsJsonFile(__DIR__ . '/challenge.json', $this->filename);
     }
 }
