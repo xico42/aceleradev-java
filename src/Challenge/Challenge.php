@@ -8,26 +8,11 @@ use JsonSerializable;
 
 class Challenge implements JsonSerializable
 {
-    /**
-     * @var int
-     */
-    private $shift;
-    /**
-     * @var string
-     */
-    private $token;
-    /**
-     * @var string
-     */
-    private $cipherText;
-    /**
-     * @var string
-     */
-    private $decodedText = '';
-    /**
-     * @var string
-     */
-    private $hash = '';
+    private int $shift;
+    private string $token;
+    private string $cipherText;
+    private string $decodedText = '';
+    private string $hash = '';
 
     public function __construct(
         int $shift,
@@ -45,17 +30,11 @@ class Challenge implements JsonSerializable
         $this->hash = $solution->getHashCode();
     }
 
-    /**
-     * @return int
-     */
     public function getShift(): int
     {
         return $this->shift;
     }
 
-    /**
-     * @return string
-     */
     public function getCipherText(): string
     {
         return $this->cipherText;

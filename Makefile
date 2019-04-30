@@ -7,10 +7,10 @@ PHPUNIT_BIN ?= ${DOCKER_RUN} php vendor/bin/phpunit
 it: image tests
 
 vendor: composer.json composer.lock
-	${COMPOSER_BIN} install
+	@${COMPOSER_BIN} install
 
 tests: vendor
-	${PHPUNIT_BIN}
+	@${PHPUNIT_BIN}
 
 image:
-	 docker build -t fcoedno/aceleradev .
+	@docker build -t fcoedno/aceleradev .

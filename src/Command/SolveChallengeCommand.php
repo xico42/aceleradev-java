@@ -14,18 +14,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SolveChallengeCommand extends Command
 {
-    /**
-     * @var ChallengeLoader
-     */
-    private $loader;
-    /**
-     * @var ChallengeSubmission
-     */
-    private $submission;
-    /**
-     * @var ChallengeSolver
-     */
-    private $solver;
+    private ChallengeLoader $loader;
+    private ChallengeSubmission $submission;
+    private ChallengeSolver $solver;
 
     public function __construct(
         ChallengeLoader $loader,

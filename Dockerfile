@@ -1,6 +1,6 @@
 FROM composer:1 as composer
 
-FROM php:7.3-cli
+FROM devilbox/php-fpm-7.4:latest
 RUN groupadd -g 1000 app \
     && useradd -m -u 1000 -g app app \
     && mkdir -p /opt/.composer \
