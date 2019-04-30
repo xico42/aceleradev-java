@@ -12,19 +12,14 @@ use AceleraDev\Caesar\Challenge\HttpSubmission;
 use AceleraDev\Caesar\Challenge\Sha1;
 use AceleraDev\Caesar\Command\DownloadChallengeCommand;
 use AceleraDev\Caesar\Command\SolveChallengeCommand;
+use Symfony\Component\Console\Application as ConsoleApplication;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Application
 {
-    /**
-     * @var HttpClient
-     */
-    private $httpClient;
-    /**
-     * @var string
-     */
-    private $token;
+    private HttpClient $httpClient;
+    private string $token;
 
     public function __construct(HttpClient $httpClient, string $token)
     {
@@ -36,7 +31,7 @@ class Application
     {
         $alphabet = new Alphabet('abcdefghijklmnopqrstuvwxyz');
 
-        $app = new \Symfony\Component\Console\Application();
+        $app = new ConsoleApplication();
         $app->add(new DownloadChallengeCommand($this->httpClient, $this->token));
         $app->add(new SolveChallengeCommand(
             new FilesystemChallengeLoader(),

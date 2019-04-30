@@ -12,13 +12,10 @@ use function GuzzleHttp\Psr7\stream_for;
 
 class FakeClient implements HttpClient
 {
-    private $token;
-    private $challengeWasRequested = false;
-    /**
-     * @var bool
-     */
-    private $challengeWasSubmitted = false;
-    private $submittedChallenge = '';
+    private string $token;
+    private bool $challengeWasRequested = false;
+    private bool $challengeWasSubmitted = false;
+    private string $submittedChallenge = '';
 
     /**
      * FakeClient constructor.

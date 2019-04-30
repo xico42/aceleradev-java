@@ -12,14 +12,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DownloadChallengeCommand extends Command
 {
-    /**
-     * @var HttpClient
-     */
-    private $httpClient;
-    /**
-     * @var string
-     */
-    private $token;
+    private HttpClient $httpClient;
+    private string $token;
 
     public function __construct(HttpClient $httpClient, string $token)
     {

@@ -6,10 +6,7 @@ namespace AceleraDev\Caesar\CaesarCipher;
 
 class CaesarCipherDecoder
 {
-    /**
-     * @var Alphabet
-     */
-    private $alphabet;
+    private Alphabet $alphabet;
 
     public function __construct(Alphabet $alphabet)
     {

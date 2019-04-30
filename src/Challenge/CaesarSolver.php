@@ -8,14 +8,8 @@ use AceleraDev\Caesar\CaesarCipher\CaesarCipherDecoder;
 
 class CaesarSolver implements ChallengeSolver
 {
-    /**
-     * @var CaesarCipherDecoder
-     */
-    private $decoder;
-    /**
-     * @var HashFunction
-     */
-    private $hashFunction;
+    private CaesarCipherDecoder $decoder;
+    private HashFunction $hashFunction;
 
     public function __construct(
         CaesarCipherDecoder $decoder,

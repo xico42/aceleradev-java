@@ -6,10 +6,7 @@ namespace AceleraDev\Caesar\CaesarCipher;
 
 class Alphabet
 {
-    /**
-     * @var array
-     */
-    private $alphabetChars;
+    private array $alphabetChars;
 
     public function __construct(string $alphabetChars)
     {
