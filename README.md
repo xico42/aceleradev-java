@@ -23,3 +23,6 @@ This will save the challenge in the `answer.json` file. To submit
 the solution simply run:
 
     bin/app php bin/console solve-challenge answer.json
+    
+Or, after exporting the environment variables, just execute:
+    make solution

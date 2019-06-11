@@ -1,4 +1,4 @@
-.PHONY: image it tests
+.PHONY: image it tests solution
 
 DOCKER_RUN :=  docker run --rm -it -v $(shell pwd):/opt/project fcoedno/aceleradev
 COMPOSER_BIN ?= ${DOCKER_RUN} composer
@@ -14,3 +14,7 @@ tests: vendor
 
 image:
 	@docker build -t fcoedno/aceleradev .
+
+solution:
+	@bin/app php bin/console download-challenge answer.json
+	@bin/app php bin/console solve-challenge answer.json
